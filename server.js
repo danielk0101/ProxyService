@@ -176,11 +176,11 @@ const processResponse = (proxyRes, res, append) => {
 };
 
 const onProxyReq = (proxyReq, req, res, options) => {
-  proxyReq.setHeader('User-Agent', proxyReq.getHeader('proxy-override-user-agent') || DEFAULT_USERAGENT);
-  if (REWRITE_ACCEPT_ENCODING) {
-    proxyReq.setHeader('Accept-Encoding', 'gzip');
+  proxyReq.setHeader('User-Agent', proxyReq.getHeader('proxy-override-user-agent') || DEFAULT_USERAGENT); //1
+  if (REWRITE_ACCEPT_ENCODING) { //2
+    proxyReq.setHeader('Accept-Encoding', 'gzip'); //3
   }
-  proxyReq.removeHeader('roblox-id');
+  proxyReq.removeHeader('roblox-id');//4
   proxyReq.removeHeader('proxy-access-key');
   proxyReq.removeHeader('proxy-target');
 };
